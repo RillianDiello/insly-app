@@ -37,7 +37,9 @@
           <button form="form-add" class="btn btn-info">Calculate</button>
         </span>      
       </formulary>
-      <tableList v-bind:titles="['#', 'Título', 'Descrição', 'Data']">
+      <tableList v-bind:titlesH="['#', 'Policy', '1 instalment', 'instalment2 instalment']" 
+      v-bind:titlesV="['Value', 'Base Premium (11%)', 'Commision (17%)', 'Tax(10%)', 'Total Cost']"     
+      >
 
     </tableList>
     </pannel>

@@ -6,17 +6,23 @@
         <tr>
           <th
             style="cursor:pointer"           
-            v-for="(title,index) in titles"
+            v-for="(title,index) in titlesH"
             :key="index"
           >{{title}}</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr v-for="(item, index) in list" :key="index">
-          <td v-for="el in item" :key="el">{{el}}</td>
-          
-        </tr>
+        <th>
+            <tr style="cursor:pointer"           
+              v-for="(title,index) in titlesV"
+            :key="index"
+          >{{title}}</tr>
+        </th>
+        
+        <!-- <tr v-for="(item, index) in list" :key="index">
+          <td v-for="el in item" :key="el">{{el}}</td>          
+        </tr> -->
       </tbody>
     </table>
   </div>
@@ -25,8 +31,9 @@
 <script>
 export default {
   props: [
-    "titles",
-    "itens"
+    "titlesH",
+    "titlesV",
+    "itens",
     
   ],
    computed: {
@@ -35,8 +42,6 @@ export default {
       return list;
     }
    }
-  
-  
 };
 </script>
 
