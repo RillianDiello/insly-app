@@ -1,17 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="./assets/insly.png">
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+
+      <router-link v-for="(view, index) in getViews()"
+        :key="`route-link-${index}`"
+        :to="`/${view.toLowerCase()}`">
+          {{ view }}
+          <span v-if="index !== getViews().length - 1"> | </span>
+      </router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+const response = require.context('./views', true, /^((?!vue).)*$/, 'lazy')
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  methods: {
+    getViews () {
+      return response.keys()
+        .map(item => item.replace('./', ''))
+        .filter(item => item !== 'Home')
+    }
   }
 }
 </script>
@@ -25,4 +37,6 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+
 </style>
