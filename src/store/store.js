@@ -17,16 +17,23 @@ export default new Vuex.Store({
 
         }
     },
+    actions:{
+
+    },
     mutations:{
         setCalc(state, calc){
             state.calc = calc;
+        },
+        setItens(state, itens){
+            state.itens = itens
         }
     },
     actions: {
-        makingCalcu({ commit }){
+        makingCalcs({ commit }){
+            debugger;
           return http.post(api.url + 'calc', calc)
           .then(( { data } ) => {
-            commit('setFilmes', data); 
+            commit('setItens', data); 
           })
         }
     }

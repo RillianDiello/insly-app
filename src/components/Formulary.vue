@@ -16,7 +16,7 @@ export default {
   props: ["css", "action", "method", "enctype", "token"],
   data: function() {
     return {
-      urlPost: "http://localhost/insly-app/app-back/Router.php"
+      
     };
   }, 
   computed: {

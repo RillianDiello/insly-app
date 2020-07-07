@@ -3,7 +3,7 @@
     <br />
     <pannel>
       <br />
-      <formulary id="form-add" action="#" method="post">
+      <formulary id="form-add"  method="post">
         <div class="form-group">
           <label for="valueOfCar">
             Estimated value of the Car
@@ -136,11 +136,11 @@ export default {
     },
     makeCalcs() {
       debugger;
-      let erros = this.ValidateForm()
+      
       if (this.ValidateForm()) {
-        this.makingCalcs(this.calculator).then(({ data }) => {
-          alert(data);
-        });
+        // this.makingCalcs(this.calculator).then(({ data }) => {
+        //   alert(data);
+        // });
       }
     }
   }
