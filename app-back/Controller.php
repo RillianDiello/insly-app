@@ -5,6 +5,8 @@ use app\Calc;
 
 
 
+
+
 class CalcController
 {
 	public static function open($requisicao)

@@ -26,14 +26,6 @@ class Calc
         $this->numInstalments= $numInstalments;
     }
 
-    // function Calc($valueOfCar, $taxPercent, $numInstalments)
-    // {
-    //     $this->valueOfCar = $valueOfCar;
-    //     $this->taxPercent = $taxPercent;
-    //     $this->numInstalments = $numInstalments;
-    //     $this->calculate = new CalculateInsurance();
-    // }
-
     public function getValueOfCar(){
         return $this->valueOfCar;;
     }

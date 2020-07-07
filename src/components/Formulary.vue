@@ -5,7 +5,7 @@
     v-bind:method="defineMethod"
     v-bind:enctype="enctype"
   >
-    <input v-if="alterMethod" type="hidden" name="_method" v-bind:value="alterMethod" />
+    <input type="hidden" name="_method" />
     <input v-if="token" type="hidden" name="_token" v-bind:value="token" />
     <slot></slot>
   </form>
@@ -16,9 +16,9 @@ export default {
   props: ["css", "action", "method", "enctype", "token"],
   data: function() {
     return {
-      alterMethod: ""
+      urlPost: "http://localhost/insly-app/app-back/Router.php"
     };
-  },
+  }, 
   computed: {
     defineMethod: function() {
       if (
@@ -27,7 +27,7 @@ export default {
       ) {
         return this.method.toLowerCase();
       }
-     
+
       return "post";
     }
   }

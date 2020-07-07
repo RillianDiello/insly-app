@@ -1,5 +1,7 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <page length="12"><br>
+    <pannel title="About">
+      <br />
+    </pannel>
+  </page>
 </template>

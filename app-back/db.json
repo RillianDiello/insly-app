@@ -1,0 +1,35 @@
+{
+    "itens":{
+       "titulosH":[
+          "#",
+          "Policy",
+          "1 instalment",
+          "instalment2 instalment"
+       ],
+       "titulosV":[
+          "Value",
+          "Base Premium (11%)",
+          "Commision (17%)",
+          "Tax(10%)",
+          "Total Cost"
+       ],
+       "total":{
+          "valuof":100000.00,
+          "base":1100.00,
+          "comission":187.00,
+          "tax":110.00,
+          "parcelas":{
+             "p1":{
+                "base":550.00,
+                "comission":93.00,
+                "tax":55.00
+             },
+             "p2":{
+                "base":550.00,
+                "comission":93.00,
+                "tax":55.00
+             }
+          }
+       }
+    }
+ }
