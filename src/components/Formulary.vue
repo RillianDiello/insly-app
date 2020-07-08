@@ -6,7 +6,7 @@
     v-bind:enctype="enctype"
   >
     <input type="hidden" name="_method" />
-    <input v-if="token" type="hidden" name="_token" v-bind:value="token" />
+    <input v-if="token" type="hidden" name="_token" />
     <slot></slot>
   </form>
 </template>

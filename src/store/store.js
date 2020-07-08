@@ -2,7 +2,7 @@ import Vuex from 'vuex'
 import Vue from 'vue'
 import http from '../httpHelper'
 import api from '../api'
-import { _ } from 'core-js'
+
 
 Vue.use(Vuex) 
 
@@ -13,8 +13,10 @@ export default new Vuex.Store({
             percent: '',
             instalments: ''
         },
+      
         table:{
-
+            totals: '',
+            instalments: []
         }
     },
     actions:{
@@ -29,12 +31,11 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        makingCalcs({ commit }){
+        makingCalcs( calc){
             debugger;
-          return http.post(api.url + 'calc', calc)
-          .then(( { data } ) => {
-            commit('setItens', data); 
-          })
-        }
+           console.log(calc);
+          
+        },
+        
     }
 })

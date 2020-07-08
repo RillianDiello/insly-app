@@ -3,7 +3,7 @@
     <br />
     <pannel>
       <br />
-      <formulary id="form-add"  method="post">
+      
         <div class="form-group">
           <label for="valueOfCar">
             Estimated value of the Car
@@ -52,7 +52,7 @@
             <button form="form-add" class="btn btn-info" v-on:click="makeCalcs">Calculate</button>
           </span>
         </div>
-      </formulary>
+      
       <br />
       <tableList
         v-bind:titlesH="['#', 'Policy', '1 instalment', 'instalment2 instalment']"
@@ -66,7 +66,6 @@
 <script>
 import page from "@/components/Page.vue";
 import pannel from "@/components/Pannel.vue";
-import formulary from "@/components/Formulary.vue";
 import tableList from "@/components/TableList.vue";
 import { mapActions } from "vuex";
 export default {
@@ -79,13 +78,13 @@ export default {
   },
   components: {
     page,
-    pannel,
-    formulary,
+    pannel,    
     tableList
   },
 
   methods: {
     ...mapActions(["makingCalcs"]),
+    
     ResetForm: function() {
       this.calculator.valueOfCar = "";
       this.calculator.taxPercent = "";
@@ -97,12 +96,13 @@ export default {
       this.error.numInstalments = "*";
     },
     ValidateForm: function() {
-      debugger;
+      
       var error = 0;
       this.ResetError();
       if (this.calculator.valueOfCar != "") {
         let valueOfCar = parseFloat(this.calculator.valueOfCar);
         if (valueOfCar < 100 || valueOfCar > 100000) {
+          
           this.error.valueOfCar = "Invalid value of Estimated value of the car";
           error++;
         }
@@ -128,19 +128,19 @@ export default {
           error++;
         }
       } else {
-        this.error.taxPercent = "Invalid value of Numbers of instalments ";
+        this.error.numInstalments = "Invalid value of Numbers of instalments ";
         error++;
       }
 
       return error === 0;
     },
     makeCalcs() {
-      debugger;
-      
-      if (this.ValidateForm()) {
-        // this.makingCalcs(this.calculator).then(({ data }) => {
-        //   alert(data);
-        // });
+      // debugger;
+      var result = this.ValidateForm()
+      if (result) {        
+        this.makingCalcs(this.calculator).then(({ data }) => {
+        alert(data);
+        });
       }
     }
   }
