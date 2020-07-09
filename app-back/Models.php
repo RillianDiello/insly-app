@@ -1,6 +1,7 @@
 <?php
 namespace app;
 
+
 class Calc
 {
     private $valueOfCar;
@@ -69,7 +70,7 @@ class CalculateInsurance
 
     public function setBasePremium(float $value)
     {     
-        if(checkWeekDay() && checkInterval())
+        if($this->checkWeekDay() && $this->checkInterval())
         {
             $this->base_premium = $value * (self::BASEPRICEFRIDAY/100);
         }else{
@@ -139,7 +140,7 @@ class CalculateInsurance
     }
 
     public function getArrayInstalments(){
-        retun $this->arrayInstalments;
+        return $this->arrayInstalments;
     }
 
 }
@@ -179,9 +180,7 @@ class CalculateIntalment
         return $this->taxIntalmen;;
     }
 
-    public function getComissionIntalmen(){
-        retur
-    }
-
+  
 }
 
+?>
