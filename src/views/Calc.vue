@@ -3,7 +3,7 @@
     <br />
     <pannel>
       <br />
-      <form method="post">
+      <form @submit.prevent="CalcularPolicy" method="post">
         <div class="form-group">
           <label for="valueOfCar">
             Estimated value of the Car
@@ -48,18 +48,19 @@
         </div>
         <div>
           <span slot="buttons">
-            <button form="form-add" class="btn btn-light" v-on:click="ResetForm">Clear</button>
-            <button form="form-add" class="btn btn-info" type="submit" v-on:click="makeCalcs">Calculate</button>
+            <button class="btn btn-light" v-on:click="ResetForm">Clear</button>
+            <button class="btn btn-info" type="submit">Calculate</button>
           </span>
         </div>
       </form>
       <br />
       <tableList
-        v-bind:titlesH="['#', 'Policy', '1 instalment', 'instalment2 instalment']"
+        v-bind:policy="['#','Policy']"
+        v-bind:titlesH="[ 'instalment', 'instalment' ,'instalment','instalment', 'instalment' ,'instalment']"
         v-bind:titlesV="['Value', 'Base Premium (11%)', 'Commision (17%)', 'Tax(10%)', 'Total Cost']"
       ></tableList>
 
-      <tableList v-bind:titles="['#', 'Título', 'Descrição', 'Data']"></tableList>
+    
     </pannel>
   </page>
 </template>
@@ -67,13 +68,15 @@
 import page from "@/components/Page.vue";
 import pannel from "@/components/Pannel.vue";
 import tableList from "@/components/TableList.vue";
-import { mapActions } from "vuex";
+import axios from 'axios';
+
 export default {
   name: "Calc",
   data() {
     return {
       error: { valueOfCar: "*", taxPercent: "*", numInstalments: "*" },
-      calculator: { valueOfCar: "", taxPercent: "", numInstalments: "" }
+      calculator: { valueOfCar: "", taxPercent: "", numInstalments: "" },
+      itensTable : []
     };
   },
   components: {
@@ -83,7 +86,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(["makingCalcs"]),
+    
     
     ResetForm: function() {
       this.calculator.valueOfCar = "";
@@ -133,13 +136,20 @@ export default {
 
       return error === 0;
     },
-    makeCalcs() {
-      
+    CalcularPolicy() {
+     
       if (this.ValidateForm()) {  
-        console.log(this.calculator)    ;
-       // this.makingCalcs(this.calculator).then(({ data }) => {
-       // alert(data);
-      //  });
+        
+        
+        const response = axios.post('http://localhost:8000/api/calcs', {
+          valueOfCar : this.calculator.valueOfCar,
+          taxPercent : this.calculator.taxPercent,
+          numInstalments : this.calculator.numInstalments
+        }).then(({ data }) => {
+          this.itensTable.push(data);
+          this.ResetForm();
+        });
+      
       }
     }
   }

@@ -3,7 +3,13 @@
     
     <table class="table table-striped table-hover">
       <thead>
+        
         <tr>
+          <th
+            style="cursor:pointer"           
+            v-for="(title,index) in policy"
+            :key="index"
+          >{{title}}</th>
           <th
             style="cursor:pointer"           
             v-for="(title,index) in titlesH"
@@ -31,6 +37,7 @@
 <script>
 export default {
   props: [
+    "policy",
     "titlesH",
     "titlesV",
     "itens",
