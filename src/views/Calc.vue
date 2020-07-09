@@ -3,7 +3,7 @@
     <br />
     <pannel>
       <br />
-      
+      <form method="post">
         <div class="form-group">
           <label for="valueOfCar">
             Estimated value of the Car
@@ -49,10 +49,10 @@
         <div>
           <span slot="buttons">
             <button form="form-add" class="btn btn-light" v-on:click="ResetForm">Clear</button>
-            <button form="form-add" class="btn btn-info" v-on:click="makeCalcs">Calculate</button>
+            <button form="form-add" class="btn btn-info" type="submit" v-on:click="makeCalcs">Calculate</button>
           </span>
         </div>
-      
+      </form>
       <br />
       <tableList
         v-bind:titlesH="['#', 'Policy', '1 instalment', 'instalment2 instalment']"
@@ -69,7 +69,7 @@ import pannel from "@/components/Pannel.vue";
 import tableList from "@/components/TableList.vue";
 import { mapActions } from "vuex";
 export default {
-  name: "MakeCalc",
+  name: "Calc",
   data() {
     return {
       error: { valueOfCar: "*", taxPercent: "*", numInstalments: "*" },
@@ -95,8 +95,7 @@ export default {
       this.error.taxPercent = "*";
       this.error.numInstalments = "*";
     },
-    ValidateForm: function() {
-      
+    ValidateForm: function() {      
       var error = 0;
       this.ResetError();
       if (this.calculator.valueOfCar != "") {
@@ -135,12 +134,12 @@ export default {
       return error === 0;
     },
     makeCalcs() {
-      // debugger;
-      var result = this.ValidateForm()
-      if (result) {        
-        this.makingCalcs(this.calculator).then(({ data }) => {
-        alert(data);
-        });
+      
+      if (this.ValidateForm()) {  
+        console.log(this.calculator)    ;
+       // this.makingCalcs(this.calculator).then(({ data }) => {
+       // alert(data);
+      //  });
       }
     }
   }

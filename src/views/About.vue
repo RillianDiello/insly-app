@@ -17,7 +17,7 @@ export default {
   components: {
     page,
     pannel
-    // modal
+   
   }
 };
 </script>

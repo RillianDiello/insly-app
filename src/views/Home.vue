@@ -11,14 +11,12 @@
 <script>
 import page from "@/components/Page.vue";
 import pannel from "@/components/Pannel.vue";
-// import modal from "@/components/Modal.vue";
 
 export default {
   name: "home",
   components: {
     page,
-    pannel
-    // modal
+    pannel   
   }
 };
 </script>

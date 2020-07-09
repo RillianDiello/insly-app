@@ -1,7 +1,5 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
-import http from '../httpHelper'
-import api from '../api'
 
 
 Vue.use(Vuex) 
