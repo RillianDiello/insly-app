@@ -1,34 +1,29 @@
 <template>
   <div>
-    
     <table class="table table-striped table-hover">
       <thead>
-        
         <tr>
-          <th
-            style="cursor:pointer"           
-            v-for="(title,index) in policy"
-            :key="index"
-          >{{title}}</th>
-          <th
-            style="cursor:pointer"           
-            v-for="(title,index) in titlesH"
-            :key="index"
-          >{{title}}</th>
+          <th style="cursor:pointer"></th>
+          <th style="cursor:pointer">Policy</th>
+        
+          <th style="cursor:pointer" v-for="(title,index) in itens.instalments" :key="index">
+              {{`${index+1} instalments`}}              
+              </th>
         </tr>
       </thead>
 
       <tbody>
-        <th>
-            <tr style="cursor:pointer"           
-              v-for="(title,index) in titlesV"
-            :key="index"
-          >{{title}}</tr>
-        </th>
         
-        <!-- <tr v-for="(item, index) in list" :key="index">
-          <td v-for="el in item" :key="el">{{el}}</td>          
-        </tr> -->
+          <tr style="cursor:pointer" v-for="(title,index) in itens.colunms" :key="index">
+            <th>{{title}}</th>
+            <td>{{itens.totais[index]}}</td>
+            <td
+              v-for="(instances,parcela) in itens.instalments"
+              :key="parcela+instances"
+            >{{instances[index]}}</td>
+          </tr>
+        
+       
       </tbody>
     </table>
   </div>
@@ -36,19 +31,19 @@
 
 <script>
 export default {
-  props: [
-    "policy",
-    "titlesH",
-    "titlesV",
-    "itens",
-    
-  ],
-   computed: {
+  props: ["itens"],
+  data: function() {
+    return {
+      colunms: []
+    };
+  },
+  computed: {
     list: function() {
-      let list = this.itens;
+      let list = this.itens.data;
+
       return list;
     }
-   }
+  }
 };
 </script>
 

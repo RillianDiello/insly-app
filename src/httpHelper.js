@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 const http = axios.create({
-    baseURL: 'http://localhost/app-back/'
+    baseURL: 'http://localhost:8000/api/'
   })       
 export default http;

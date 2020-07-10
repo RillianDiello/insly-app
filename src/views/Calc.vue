@@ -2,14 +2,13 @@
   <page length="12">
     <br />
     <pannel>
-      <br />
-      <form @submit.prevent="CalcularPolicy" method="post">
+      <br />     
         <div class="form-group">
           <label for="valueOfCar">
             Estimated value of the Car
             <span class="red-alert">{{error.valueOfCar}}</span>
           </label>
-          <input
+          <input            
             type="number"
             class="form-control"
             id="titulo"
@@ -23,11 +22,11 @@
             Tax percent
             <span class="red-alert">{{error.taxPercent}}</span>
           </label>
-          <input
+          <input            
             type="number"
             class="form-control"
             id="taxPercent"
-            name="taxPercent"
+            name="taxPercent"            
             v-model="calculator.taxPercent"
             placeholder="Tax Percentage between (0 - 100) %"
           />
@@ -37,7 +36,7 @@
             Number of instalments
             <span class="red-alert">{{error.numInstalments}}</span>
           </label>
-          <input
+          <input            
             type="number"
             class="form-control"
             id="numInstalments"
@@ -49,15 +48,13 @@
         <div>
           <span slot="buttons">
             <button class="btn btn-light" v-on:click="ResetForm">Clear</button>
-            <button class="btn btn-info" type="submit">Calculate</button>
+            <button class="btn btn-info" v-on:click="CalcularPolicy">Calculate</button>
           </span>
         </div>
-      </form>
+      
       <br />
-      <tableList
-        v-bind:policy="['#','Policy']"
-        v-bind:titlesH="[ 'instalment', 'instalment' ,'instalment','instalment', 'instalment' ,'instalment']"
-        v-bind:titlesV="['Value', 'Base Premium (11%)', 'Commision (17%)', 'Tax(10%)', 'Total Cost']"
+      <tableList        
+        v-bind:itens="itens"
       ></tableList>
 
     
@@ -69,6 +66,7 @@ import page from "@/components/Page.vue";
 import pannel from "@/components/Pannel.vue";
 import tableList from "@/components/TableList.vue";
 import axios from 'axios';
+import api from '../api';
 
 export default {
   name: "Calc",
@@ -76,17 +74,16 @@ export default {
     return {
       error: { valueOfCar: "*", taxPercent: "*", numInstalments: "*" },
       calculator: { valueOfCar: "", taxPercent: "", numInstalments: "" },
-      itensTable : []
+      itens : [],      
     };
   },
   components: {
     page,
     pannel,    
-    tableList
+    tableList    
   },
 
-  methods: {
-    
+  methods: {   
     
     ResetForm: function() {
       this.calculator.valueOfCar = "";
@@ -136,20 +133,16 @@ export default {
 
       return error === 0;
     },
-    CalcularPolicy() {
-     
-      if (this.ValidateForm()) {  
-        
-        
-        const response = axios.post('http://localhost:8000/api/calcs', {
+    CalcularPolicy() {     
+      if (this.ValidateForm()) {         
+        const response = axios.post( api.url + '/api/make-calc', {
           valueOfCar : this.calculator.valueOfCar,
           taxPercent : this.calculator.taxPercent,
           numInstalments : this.calculator.numInstalments
         }).then(({ data }) => {
-          this.itensTable.push(data);
-          this.ResetForm();
-        });
-      
+          this.itens = data;         
+        });      
+        console.log(response);
       }
     }
   }
