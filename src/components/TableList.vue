@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <th style="cursor:pointer"></th>
-          <th style="cursor:pointer">Policy</th>
+          <th style="cursor:pointer">{{itens.totais.policy}}</th>
         
           <th style="cursor:pointer" v-for="(title,index) in itens.instalments" :key="index">
               {{`${index+1} instalments`}}              
