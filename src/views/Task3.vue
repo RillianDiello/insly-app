@@ -1,8 +1,12 @@
 <template>
   <page length="12">
     <br />
-    <pannel title="Insly Test">
+    <pannel title="TASK 3 - Store employee data">
      
+     <div>
+       Create a database structure to store employee information.
+     </div>
+     <img alt="Vue logo" src="../assets/Mer.png">
       
     </pannel>
   </page>
@@ -13,7 +17,7 @@ import page from "@/components/Page.vue";
 import pannel from "@/components/Pannel.vue";
 
 export default {
-  name: "about",
+  name: "task1",
   components: {
     page,
     pannel

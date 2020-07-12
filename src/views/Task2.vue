@@ -1,8 +1,9 @@
 <template>
   <page length="12">
     <br />
-    <pannel>
+    <pannel title="TASK 2 - Calculator">
       <br />
+      <div>This form corresponding there are tasks 2 and yours activities</div>
       <div class="form-group">
         <label for="valueOfCar">
           Estimated value of the Car

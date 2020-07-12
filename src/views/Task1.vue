@@ -1,8 +1,12 @@
 <template>
   <page length="12">
     <br />
-    <pannel title="Insly Test">
-     <span>Developer Test</span>
+    <pannel title="TASK 1 - Name">
+     
+     <div>
+       Create a database structure to store employee information
+     </div>
+     
       
     </pannel>
   </page>
@@ -13,10 +17,11 @@ import page from "@/components/Page.vue";
 import pannel from "@/components/Pannel.vue";
 
 export default {
-  name: "home",
+  name: "task1",
   components: {
     page,
-    pannel   
+    pannel
+   
   }
 };
 </script>
