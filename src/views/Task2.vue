@@ -54,7 +54,7 @@
       </div>
 
       <br />
-      <tableList v-bind:itens="itens"></tableList>
+      <tableList v-bind:tableTrue="tableTrue" v-bind:itens="itens"></tableList>
     </pannel>
   </page>
 </template>
@@ -71,7 +71,8 @@ export default {
     return {
       error: { valueOfCar: "*", taxPercent: "*", numInstalments: "*" },
       calculator: { valueOfCar: "", taxPercent: "", numInstalments: "" },
-      itens: []
+      itens: [],
+      tableTrue: false
     };
   },
   components: {
@@ -85,6 +86,7 @@ export default {
       this.calculator.taxPercent = "";
       this.calculator.numInstalments = "";
       this.ResetError();
+      this.tableTrue = false;
     },
     ResetError: function() {
       this.error.valueOfCar = "*";
@@ -138,19 +140,21 @@ export default {
           })
           .then(({ data }) => {
            if(data.errors.valueOfCar){
-              data.errors.valueOfCar[0];
+              this.error.valueOfCar =  data.errors.valueOfCar[0];
             }if(data.errors.taxPercent){
             this.error.taxPercent = data.errors.taxPercent[0];
             }if(data.errors.numInstalments){
             this.error.numInstalments = data.errors.numInstalments[0];
             }
-           
+            if(data.errors.length == 0){
+              this.tableTrue = true;
+            }
             this.itens = data;
           });
         console.log(response);
       }
     }
-  }
+  }  
 };
 </script>
 <style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-hover" v-if="tableTrue">
       <thead>
         <tr>
           <th style="cursor:pointer"></th>
@@ -31,7 +31,7 @@
 
 <script>
 export default {
-  props: ["itens", "policy"],
+  props: ["itens", "policy", "tableTrue"],
   data: function() {
     return {      
       columns: []
