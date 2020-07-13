@@ -84,6 +84,7 @@ export default {
       this.calculator.valueOfCar = "";
       this.calculator.taxPercent = "";
       this.calculator.numInstalments = "";
+      this.ResetError();
     },
     ResetError: function() {
       this.error.valueOfCar = "*";
