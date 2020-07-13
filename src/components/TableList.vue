@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <th style="cursor:pointer"></th>
-          <th style="cursor:pointer">{{itens.totais.policy}}</th>
+          <th style="cursor:pointer" v-if="itens.totais">{{itens.totais.policy}}</th>
         
           <th style="cursor:pointer" v-for="(title,index) in itens.instalments" :key="index">
               {{`${index+1} instalments`}}              
@@ -31,19 +31,19 @@
 
 <script>
 export default {
-  props: ["itens"],
+  props: ["itens", "policy"],
   data: function() {
-    return {
-      colunms: []
+    return {      
+      columns: []
     };
   },
-  computed: {
-    list: function() {
-      let list = this.itens.data;
-
-      return list;
+ 
+  methods: {
+    setPolicy: function (){
+      this.policy =  this.itens.totais.policy
     }
   }
+  
 };
 </script>
 
