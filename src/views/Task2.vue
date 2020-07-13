@@ -150,10 +150,8 @@ export default {
             if(data.errors.length == 0){
               this.tableTrue = true;
             }
-            debugger;
-            if(data.instalments.length > 6) {
-              console.log('fdsafdsa');
-            }
+            
+           
             this.itens = data;
           });
         console.log(response);
